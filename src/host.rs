@@ -282,6 +282,14 @@ impl<T> Host<T> {
             self.peer_id(res)
         }))
     }
+
+    /// Enables compression
+    pub fn compress_with_range_coder(&mut self) {
+        unsafe {
+            enet_sys::enet_host_compress_with_range_coder(self.inner);
+        }
+    }
+
 }
 
 impl<T> Drop for Host<T> {
